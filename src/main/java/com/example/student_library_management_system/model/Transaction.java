@@ -27,4 +27,12 @@ public class Transaction {
     @Column(name="transaction_type", nullable = false)
     @Enumerated(EnumType.STRING) // converts pre-defined value as string
     private TransactionType transactionType;
+
+    @JoinColumn
+    @ManyToOne
+    private Card card;
+
+    @JoinColumn
+    @ManyToOne
+    private Book book;
 }

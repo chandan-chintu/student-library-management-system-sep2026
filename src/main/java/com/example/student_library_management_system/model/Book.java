@@ -3,6 +3,8 @@ package com.example.student_library_management_system.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Table(name = "book_details")
 @Data
@@ -33,4 +35,7 @@ public class Book {
 
     @Column(name="rack_no",nullable = false)
     private String rackNo;
+
+    @OneToMany(mappedBy = "book")
+    private List<Transaction> transactionList;
 }

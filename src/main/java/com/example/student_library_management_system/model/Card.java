@@ -6,6 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="card_details")
@@ -30,4 +31,11 @@ public class Card {
     @Column(name="updated_date", nullable = false)
     @UpdateTimestamp // when a card is updated it will automatically update date and time
     private Date updatedDate;
+
+    @JoinColumn // it joins the primary key student id from student table as a foreign key in card table
+    @OneToOne // one card will be assigned to one student
+    private Student student;
+
+    @OneToMany(mappedBy = "card")
+    private List<Transaction> transactionList;
 }
